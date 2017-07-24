@@ -1,0 +1,75 @@
+/******************Input Section*******************//
+Max_Iterations 5000 //5141 2808
+Start_step 1
+xlen 0.02
+ylen 0.01
+zlen 0                     // Set = 0 for 2-D
+xelem 72
+yelem 36
+zelem 1                    // Set = 1 for 2-D
+Kinematic_viscosity 10e-5
+Tolerance_x 1e-2
+Tolerance_p 1e-2
+Bubble_radius 0.0025
+x_pos_of_bubble 0.005
+y_pos_of_bubble 0.005
+advect_steps 100
+bub_advect_scheme book
+//bub_advect_scheme HJ-WENO !Do not use this for now. BC are not adapted to this scheme
+
+/****************************
+GS_relaxation_factor 0.5
+
+/******************Multiphase Parameters*****************//
+Liquid_density 1000.0    //958.349
+Gas_density 1.3
+Liquid_viscosity 0.001    //281.742e-6
+Gas_viscosity 0.000016
+Epsilon 1.2
+Surface_tension_coefficient 0.073
+
+/******************Re-Distance Parameters****************//
+Re_distance_timestep 1e-4
+Re_distance_loops 5
+
+/******************Printing******************/
+print_gap 100
+
+
+/***************Other Control Parameters**************/
+//Solver_type steady-state
+Solver_type transient
+Solve_flow 1
+Variable_density_pressure_solver 2    #0 - off; 1 - constant density; 2 - variable density
+Surface_tension 1
+Advect_bubble 1
+Void_fraction_control 1
+Re-distance_method 2               #0 - off; 1 - hyperbolic; 2 - fastmarch; 3 - direct
+
+
+/*************Boundary Conditions*****************/
+//x-boundary no-slip
+//x-boundary slip
+x-boundary periodic
+
+y-boundary no-slip
+//y-boundary slip
+//y-boundary periodic
+
+/*********Time Control*********/
+//Time_control CFL-based
+max_CFL 0.01
+Time_control constant_time
+advect_deltat 1e-4
+
+/******Buoyancy Force Accelerations******/
+/**Give sign according to gravity direction**/
+gx 0.0
+gy 0.0
+
+/*****Case control for specific Initial Conditions and BC's*/
+//Case vortex
+//Case bubble_rise
+//Case bubble_break
+//Case zalesak
+Case homework
