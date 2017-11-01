@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /*
- * File:   main.cpp
+ * File:   2phase.cpp
  * Author: nsaini3
  *
- * Created on October 18, 2016, 2:22 PM
+ * Created on November 1, 2017
  */
 
 #define PI 3.1415926535897
@@ -32,8 +27,8 @@
 #include <time.h>
 #include <cctype>
 #include <cstring>
-#include <windows.h>
 #include <omp.h>
+
 
 using namespace std;
 
@@ -68,9 +63,10 @@ int main()
 {
     ///Catches mathematical exceptions
     //feenableexcept(FE_INVALID | FE_OVERFLOW |FE_DIVBYZERO);
-
-    mkdir((getexepath()+"../../../../output").c_str());//,S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
-    mkdir((getexepath()+"../../../../laststep").c_str());//,S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+ 
+ 
+    mkdir((getexepath()+"/output").c_str(),S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+    mkdir((getexepath()+"/laststep").c_str(),S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
     time_t t1,t2;
     t1 = time(0);

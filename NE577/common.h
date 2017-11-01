@@ -70,8 +70,20 @@ string inttostr (int n)
 
 std::string getexepath()
 {
-  char result[ MAX_PATH ];
-  return std::string( result, GetModuleFileName( NULL, result, MAX_PATH ) );
+  /*char result[ PATH_MAX ];
+ ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
+ return std::string( result, (count > 0) ? count : 0 );*/
+  char cwd[1024];
+   stringstream ss;
+   string dir;
+   if (getcwd(cwd, sizeof(cwd)) != NULL)
+   {
+       ss << cwd;
+       ss >> dir;
+   }
+   else
+       perror("getcwd() error");
+   return dir;
 }
 
 
